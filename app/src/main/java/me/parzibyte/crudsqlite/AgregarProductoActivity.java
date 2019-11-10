@@ -14,9 +14,9 @@ import me.parzibyte.crudsqlite.modelos.Producto;
 
 public class AgregarProductoActivity extends AppCompatActivity {
     private Button btnAgregarMascota, btnCancelarNuevaMascota;
-    private EditText etNombre,etVelocidad,etPrecio,etNucelos;
+    private EditText etNombre,etVelocidad,etPrecio,etCalificacion;
     private ProductoController productoController;
-    Double etnucleos2=0.0;
+    Double calificacion=0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
 
         etVelocidad = findViewById(R.id.etVelocidad);
         etPrecio = findViewById(R.id.etPrecio);
-        etNucelos = findViewById(R.id.etNucelos);
+        etCalificacion = findViewById(R.id.etNucelos);
         btnAgregarMascota = findViewById(R.id.btnAgregarMascota);
         btnCancelarNuevaMascota = findViewById(R.id.btnCancelarNuevaMascota);
         // Crear el controlador
@@ -48,15 +48,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
         spinel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selectedItem = adapterView.getSelectedItem().toString();
-                if (selectedItem.equals("Tarjeta Gráfica")) {
-                    etNucelos.setVisibility(View.INVISIBLE);
-                    etNucelos.setText("0.0");
 
-                }else if (selectedItem.equals("Procesador")){
-                    etNucelos.setVisibility(View.VISIBLE);
-
-                }
             }
 
 
@@ -74,7 +66,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
 
                 etVelocidad.setError(null);
                 etPrecio.setError(null);
-                etNucelos.setError(null);
+                etCalificacion.setError(null);
                 String nombre = etNombre.getText().toString();
                         String tipo = spinel.getSelectedItem().toString();
 
@@ -82,8 +74,8 @@ public class AgregarProductoActivity extends AppCompatActivity {
                 Double velocidad2=Double.parseDouble(velocidad);
                 String precio=etPrecio.getText().toString();
                 Double precio2=Double.parseDouble(precio);
-                String nucleos=etNucelos.getText().toString();
-                etnucleos2=Double.parseDouble(nucleos);
+                String nucleos=etCalificacion.getText().toString();
+                calificacion=Double.parseDouble(nucleos);
 
 
 
@@ -97,7 +89,7 @@ public class AgregarProductoActivity extends AppCompatActivity {
                 // Ver si es un entero
 
                 // Ya pasó la validación
-                Producto nuevaProducto = new Producto(nombre, tipo,velocidad2,precio2,etnucleos2);
+                Producto nuevaProducto = new Producto(nombre, tipo,velocidad2,precio2,calificacion);
                 long id = productoController.nuevaMascota(nuevaProducto);
                 if (id == -1) {
                     // De alguna manera ocurrió un error

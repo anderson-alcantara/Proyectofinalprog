@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AyudanteBaseDeDatos extends SQLiteOpenHelper {
 
-    private static final String NOMBRE_BASE_DE_DATOS = "inventariodb",
+    private static final String NOMBRE_BASE_DE_DATOS = "db2",
             NOMBRE_TABLA = "inventario";
     private static final int VERSION_BASE_DE_DATOS = 1;
 
@@ -21,7 +21,7 @@ public class AyudanteBaseDeDatos extends SQLiteOpenHelper {
                 " tipo text," +
                 " velocidad double," +
                 " precio double," +
-                " nucleos double)", NOMBRE_TABLA));
+                " calificacion double)", NOMBRE_TABLA));
     }
 
     @Override

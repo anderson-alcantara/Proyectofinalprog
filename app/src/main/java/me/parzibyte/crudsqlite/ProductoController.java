@@ -38,7 +38,7 @@ public class ProductoController {
         valoresParaInsertar.put("tipo", producto.getTipo());
         valoresParaInsertar.put("velocidad", producto.getVelocidad());
         valoresParaInsertar.put("precio", producto.getPrecio());
-        valoresParaInsertar.put("nucleos", producto.getNucleos());
+        valoresParaInsertar.put("calificacion", producto.getNucleos());
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
@@ -49,7 +49,7 @@ public class ProductoController {
         valoresParaActualizar.put("tipo", productoEditada.getTipo());
         valoresParaActualizar.put("velocidad", productoEditada.getVelocidad());
         valoresParaActualizar.put("precio", productoEditada.getPrecio());
-        valoresParaActualizar.put("nucleos", productoEditada.getNucleos());
+        valoresParaActualizar.put("calificacion", productoEditada.getNucleos());
         // where id...
         String campoParaActualizar = "id = ?";
         // ... = idMascota
@@ -62,7 +62,7 @@ public class ProductoController {
         // readable porque no vamos a modificar, solamente leer
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
         // SELECT nombre, edad, id
-        String[] columnasAConsultar = {"nombre", "tipo", "velocidad", "precio", "nucleos", "id"};
+        String[] columnasAConsultar = {"nombre", "tipo", "velocidad", "precio", "calificacion", "id"};
         Cursor cursor = baseDeDatos.query(
                 NOMBRE_TABLA,//from productos
                 columnasAConsultar,
@@ -138,6 +138,43 @@ public class ProductoController {
         }
         cursor.close();
 
+
+
+        return word;
+    }
+
+    public String[] llenarSpinner(String tipo){
+        SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
+        String query = "Select * from inventario where tipo = '"+tipo+"'";
+        Cursor cursor = baseDeDatos.rawQuery(query, null);
+        ArrayList<String> spinnerContent = new ArrayList<String>();
+        if(cursor.moveToFirst()){
+            do{
+                String word = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                spinnerContent.add(word);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+
+        String[] allSpinner = new String[spinnerContent.size()];
+        allSpinner = spinnerContent.toArray(allSpinner);
+
+        return allSpinner;
+    }
+
+    public String obtenerCalificacion(String nombre){
+        String word = "";
+        SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
+        String query = "Select * from inventario where nombre = '"+nombre+"'";
+        Cursor cursor = baseDeDatos.rawQuery(query, null);
+        ArrayList<String> spinnerContent = new ArrayList<String>();
+        if(cursor.moveToFirst()){
+            do{
+                 word = cursor.getString(cursor.getColumnIndexOrThrow("calificacion"));
+                spinnerContent.add(word);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
 
 
         return word;

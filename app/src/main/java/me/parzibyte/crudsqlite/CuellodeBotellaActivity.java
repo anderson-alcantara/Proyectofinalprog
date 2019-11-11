@@ -8,10 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CuellodeBotellaActivity extends AppCompatActivity {
     Double c1 = 0.0, c2 = 0.0;
+    TextView textView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +57,11 @@ public class CuellodeBotellaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 c1 = Double.parseDouble(dbBackend.obtenerCalificacion(spinner.getSelectedItem().toString()));
                 c2 = Double.parseDouble(dbBackend.obtenerCalificacion(spinner2.getSelectedItem().toString()));
+                textView = (TextView)findViewById(R.id.textView11);
+                textView.setText(""+c1);
                 Toast.makeText(getApplicationContext(),
                         ""+c1+" -- "+c2, Toast.LENGTH_SHORT).show();
+                
             }
         });
     }

@@ -12,8 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginLeft="62dp"
         android:layout_marginTop="23dp" />
 
     <Button
@@ -23,10 +23,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginRight="57dp"
-        android:text="Button" />
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:text="Consultar" />
 
     <Button
         android:id="@+id/btnsumarp2"
@@ -37,49 +37,52 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="315dp"
-        android:layout_marginRight="315dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="281dp"
+        android:layout_marginRight="281dp"
+        android:layout_marginBottom="74dp"
         android:text="Button" />
 
     <TextView
         android:id="@+id/txtsumap2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="75dp"
         android:layout_below="@+id/btnsumarp2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="343dp"
-        android:layout_marginRight="343dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="306dp"
+        android:layout_marginRight="306dp"
+        android:layout_marginBottom="73dp"
         android:text="TextView" />
 
     <GridView
-        android:columnWidth="2dp"
         android:id="@+id/gridvp2"
-        android:layout_width="343dp"
-        android:layout_height="415dp"
+        android:layout_width="411dp"
+        android:layout_height="460dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-3dp"
 
 
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginLeft="-3dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
 
-         />
+        android:layout_marginBottom="154dp"
+        android:columnWidth="2dp" />
 
 </RelativeLayout>

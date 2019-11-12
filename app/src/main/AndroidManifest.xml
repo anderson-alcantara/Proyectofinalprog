@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PreciosActivity"></activity>
+        <activity android:name=".AcercadeActivity"></activity>
+        <activity android:name=".PreciosActivity" />
         <activity android:name=".CuellodeBotellaActivity" />
         <activity android:name=".MenuActivity">
             <intent-filter>

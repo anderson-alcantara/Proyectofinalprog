@@ -42,5 +42,12 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnpcarmado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, AcercadeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

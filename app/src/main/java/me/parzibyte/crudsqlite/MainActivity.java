@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .setTitle("Confirmar")
-                        .setMessage("¿Eliminar a la mascota " + productoParaEliminar.getNombre() + "?")
+                        .setMessage("¿Eliminar el producto " + productoParaEliminar.getNombre() + "?")
                         .create();
                 dialog.show();
 

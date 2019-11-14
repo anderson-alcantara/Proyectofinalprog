@@ -3,22 +3,34 @@ package me.parzibyte.crudsqlite;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import me.parzibyte.crudsqlite.modelos.Producto;
 
 public class EditarProductoActivity extends AppCompatActivity {
-    private EditText etEditarNombre, etEditartipo,eteditarvelocidad,eteditarprecio,eteditarnucleo;
+    private EditText etEditarNombre,eteditarvelocidad,eteditarprecio,eteditarnucleo;
     private Button btnGuardarCambios, btnCancelarEdicion;
     private Producto producto;//La producto que vamos a estar editando
     private ProductoController productoController;
+    private Spinner spinnertipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_producto);
+        spinnertipo=(Spinner)findViewById(R.id.spinneredittipo);
+        String[] arraySpinner = new String[] {
+                "Procesador", "Tarjeta Gráfica"};
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnertipo.setAdapter(adapter);
 
         // Recuperar datos que enviaron
         Bundle extras = getIntent().getExtras();
@@ -39,12 +51,18 @@ public class EditarProductoActivity extends AppCompatActivity {
         Double Nucleos=extras.getDouble("nucleos");
         Double velocidad=extras.getDouble("velocidad");
 
+        if(tipoproducto.equals("Precesador")){
+            spinnertipo.setSelection(0);
+        }else if(tipoproducto.equals("Tarjeta Gráfica")){
+            spinnertipo.setSelection(1);
+        }
+
 
         producto = new Producto(nombreproducto, tipoproducto, velocidad,precio,Nucleos,idproducto);
 
 
         // Ahora declaramos las vistas
-        etEditartipo = findViewById(R.id.etEditarTipo);
+
         etEditarNombre = findViewById(R.id.etEditarNombre);
         eteditarvelocidad = findViewById(R.id.etEditarVelocidad);
         eteditarprecio = findViewById(R.id.etEditarPrecio);
@@ -58,7 +76,6 @@ public class EditarProductoActivity extends AppCompatActivity {
         eteditarprecio.setText(String.valueOf(producto.getPrecio()));
         eteditarnucleo.setText(String.valueOf(producto.getNucleos()));
         etEditarNombre.setText(producto.getNombre());
-        etEditartipo.setText(producto.getTipo());
 
         // Listener del click del botón para salir, simplemente cierra la actividad
         btnCancelarEdicion.setOnClickListener(new View.OnClickListener() {
@@ -74,11 +91,11 @@ public class EditarProductoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Remover previos errores si existen
                 etEditarNombre.setError(null);
-                etEditartipo.setError(null);
+
                 // Crear la producto con los nuevos cambios pero ponerle
                 // el id de la anterior
                 String nuevoNombre = etEditarNombre.getText().toString();
-                String nuevotipo = etEditartipo.getText().toString();
+                String nuevotipo = spinnertipo.getSelectedItem().toString();
                 String nuevovelocidad = eteditarvelocidad.getText().toString();
                 String nuevoprecios = eteditarprecio.getText().toString();
                 String nuevonucleos = eteditarnucleo.getText().toString();
